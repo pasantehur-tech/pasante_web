@@ -1,0 +1,112 @@
+/* 1. Contenedor principal: Alinea el sidebar y el contenido uno al lado del otro */
+.container {
+    display: flex;
+    min-height: 100vh; /* Hace que ocupe todo el alto de la pantalla */
+}
+
+/* 2. Estilos para tu Sidebar con COLOR */
+.sidebar {
+    background-color: #8A5689; /* Color de fondo (Azul oscuro / Pizarra) */
+    color: #ffffff;            /* Color del texto en blanco */
+    width: 260px;              /* Ancho fijo de la barra lateral */
+    padding: 25px;             /* Espacio interno para separar el texto de los bordes */
+    box-sizing: border-box;    /* Evita que el padding altere el ancho */
+}
+
+.sidebar h2 {
+    margin-top: 0;
+    font-size: 22px;
+    border-bottom: 1px solid #321730; /* Línea sutil divisoria */
+    padding-bottom: 10px;
+}
+
+/* 3. Estilos de los botones del menú */
+.botones-container {
+    display: flex;
+    flex-direction: column;    /* Coloca los botones en lista vertical */
+    gap: 12px;                 /* Separación entre un botón y otro */
+    margin-top: 20px;
+}
+
+.boton-nav, .boton-manual {
+    background-color: #E4DCE7; /* Color de fondo de los botones */
+    color: #321730;
+    border: none;
+    padding: 12px;
+    border-radius: 6px;        /* Bordes suavemente redondeados */
+    font-size: 15px;
+    cursor: pointer;
+    text-align: left;          /* Alinea el texto del botón a la izquierda */
+    transition: background-color 0.2s ease;
+}
+
+/* Efecto visual al pasar el cursor sobre los botones */
+.boton-nav:equipos, .boton-manual:equipos {
+    background-color: #3b82f6; /* Cambia a azul brillante */
+}
+
+/* 4. Espaciado del contenido de la derecha */
+.contenido {
+    flex: 1;                   /* Toma todo el espacio restante de la pantalla */
+    padding: 30px;
+    background-color: #bac598; /* Color de fondo claro para el resto de la página */
+}
+
+/* Estilos para el texto nuevo en la zona verde */
+.seccion-texto {
+    margin-top: 25px;
+    color: #2d1b2d; /* Un color oscuro para que sea legible sobre el verde */
+}
+
+.seccion-texto h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.seccion-texto p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+/* ======================================================= */
+/* NUEVO: Botón de agregar planos y vista gigante          */
+/* ======================================================= */
+
+/* Hace que el botón "Label" se comporte y luzca como tus otros botones */
+.boton-subir {
+    display: inline-block;
+    background-color: #E4DCE7;
+    color: #321730;
+    padding: 12px 20px;
+    border-radius: 6px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    font-family: sans-serif;
+}
+
+/* Efecto hover correcto para tu nuevo botón */
+.boton-subir:hover {
+    background-color: #3b82f6;
+    color: #ffffff;
+}
+
+/* Contenedor que empuja la imagen a ocupar el máximo espacio de la zona verde */
+.contenedor-plano-gigante {
+    margin-top: 25px;
+    width: 100%;
+    display: flex;
+    justify-content: center; /* Centra el plano horizontalmente */
+    align-items: center;     /* Centra el plano verticalmente */
+}
+
+/* Fuerza a la imagen a ser lo más grande posible sin deformarse */
+#vista-plano {
+    width: 95%;          /* Ocupa el 95% del ancho de la zona verde */
+    max-height: 65vh;     /* Evita que se vaya al infinito hacia abajo, adaptándose a la pantalla */
+    object-fit: contain;  /* Mantiene las proporciones originales del plano */
+    border: 3px dashed #321730; /* Bordes estilo "plano técnico" */
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.3); /* Fondo sutil para que resalte la imagen */
+    padding: 10px;
+}
