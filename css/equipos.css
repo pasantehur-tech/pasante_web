@@ -1,61 +1,65 @@
 /* 1. Contenedor principal: Alinea el sidebar y el contenido uno al lado del otro */
 .container {
     display: flex;
-    min-height: 100vh; /* Hace que ocupe todo el alto de la pantalla */
+    min-height: 100vh; 
+    width: 100%;
 }
 
 /* 2. Estilos para tu Sidebar con COLOR */
 .sidebar {
-    background-color: #8A5689; /* Color de fondo (Azul oscuro / Pizarra) */
-    color: #ffffff;            /* Color del texto en blanco */
-    width: 260px;              /* Ancho fijo de la barra lateral */
-    padding: 25px;             /* Espacio interno para separar el texto de los bordes */
-    box-sizing: border-box;    /* Evita que el padding altere el ancho */
+    background-color: #8A5689; 
+    color: #ffffff;            
+    width: 260px;              
+    padding: 25px;             
+    box-sizing: border-box;    
+    flex-shrink: 0;
 }
 
 .sidebar h2 {
     margin-top: 0;
     font-size: 22px;
-    border-bottom: 1px solid #321730; /* Línea sutil divisoria */
+    border-bottom: 1px solid #321730; 
     padding-bottom: 10px;
 }
 
 /* 3. Estilos de los botones del menú */
 .botones-container {
     display: flex;
-    flex-direction: column;    /* Coloca los botones en lista vertical */
-    gap: 12px;                 /* Separación entre un botón y otro */
+    flex-direction: column;    
+    gap: 12px;                 
     margin-top: 20px;
 }
 
 .boton-nav, .boton-manual {
-    background-color: #E4DCE7; /* Color de fondo de los botones */
+    background-color: #E4DCE7; 
     color: #321730;
     border: none;
     padding: 12px;
-    border-radius: 6px;        /* Bordes suavemente redondeados */
+    border-radius: 6px;        
     font-size: 15px;
     cursor: pointer;
-    text-align: left;          /* Alinea el texto del botón a la izquierda */
+    text-align: left;          
     transition: background-color 0.2s ease;
+    width: 100%;
 }
 
 /* Efecto visual al pasar el cursor sobre los botones */
-.boton-nav:equipos, .boton-manual:equipos {
-    background-color: #3b82f6; /* Cambia a azul brillante */
+.boton-nav:hover, .boton-manual:hover {
+    background-color: #3b82f6; 
+    color: #ffffff;
 }
 
 /* 4. Espaciado del contenido de la derecha */
 .contenido {
-    flex: 1;                   /* Toma todo el espacio restante de la pantalla */
+    flex: 1;                   
     padding: 30px;
-    background-color: #bac598; /* Color de fondo claro para el resto de la página */
+    background-color: #bac598; 
 }
 
 /* Estilos para el texto nuevo en la zona verde */
 .seccion-texto {
     margin-top: 25px;
-    color: #2d1b2d; /* Un color oscuro para que sea legible sobre el verde */
+    color: #2d1b2d; 
 }
 
 .seccion-texto h2 {
@@ -68,11 +72,7 @@
     line-height: 1.6;
 }
 
-/* ======================================================= */
-/* NUEVO: Botón de agregar planos y vista gigante          */
-/* ======================================================= */
-
-/* Hace que el botón "Label" se comporte y luzca como tus otros botones */
+/* Botón de agregar planos y vista gigante */
 .boton-subir {
     display: inline-block;
     background-color: #E4DCE7;
@@ -83,30 +83,155 @@
     cursor: pointer;
     transition: background-color 0.2s ease;
     font-family: sans-serif;
+    margin-top: 15px;
 }
 
-/* Efecto hover correcto para tu nuevo botón */
+/* Efecto hover para el botón de subir */
 .boton-subir:hover {
     background-color: #3b82f6;
     color: #ffffff;
 }
 
-/* Contenedor que empuja la imagen a ocupar el máximo espacio de la zona verde */
+/* Contenedor corregido de la zona del plano */
 .contenedor-plano-gigante {
     margin-top: 25px;
     width: 100%;
     display: flex;
-    justify-content: center; /* Centra el plano horizontalmente */
-    align-items: center;     /* Centra el plano verticalmente */
+    justify-content: center; 
+    align-items: center;     
+    position: relative; 
 }
 
-/* Fuerza a la imagen a ser lo más grande posible sin deformarse */
 #vista-plano {
-    width: 95%;          /* Ocupa el 95% del ancho de la zona verde */
-    max-height: 65vh;     /* Evita que se vaya al infinito hacia abajo, adaptándose a la pantalla */
-    object-fit: contain;  /* Mantiene las proporciones originales del plano */
-    border: 3px dashed #321730; /* Bordes estilo "plano técnico" */
+    width: 95%;          
+    max-height: 65vh;     
+    object-fit: contain;  
+    border: 3px dashed #321730; 
     border-radius: 8px;
-    background-color: rgba(255, 255, 255, 0.3); /* Fondo sutil para que resalte la imagen */
+    background-color: rgba(255, 255, 255, 0.3); 
     padding: 10px;
+}
+
+/* ======================================================= */
+/* ESTILOS PARA LA BARRA LATERAL DERECHA Y PINES           */
+/* ======================================================= */
+
+/* Estilo base de la nueva barra */
+.sidebar-derecho {
+    background-color: #E4DCE7; 
+    color: #321730;
+    width: 260px;              
+    padding: 25px;
+    box-sizing: border-box;
+    border-left: 2px solid #8A5689; 
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    flex-shrink: 0;
+}
+
+.sidebar-derecho h3 {
+    margin-top: 0;
+    font-size: 22px;
+    border-bottom: 1px solid #8A5689;
+    padding-bottom: 10px;
+}
+
+.control-grupo {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.control-grupo label {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+/* Cajas de texto, rango y selector de color */
+.control-grupo input[type="text"], 
+.control-grupo input[type="color"],
+.control-grupo input[type="range"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #8A5689;
+    border-radius: 6px;
+    box-sizing: border-box;
+}
+
+.control-grupo input[type="color"] {
+    height: 40px;
+    cursor: pointer;
+    padding: 2px;
+}
+
+.control-grupo input[type="range"] {
+    accent-color: #8A5689; 
+}
+
+/* Botón para añadir pines */
+.btn-crear {
+    background-color: #8A5689;
+    color: white;
+    border: none;
+    padding: 12px;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+    transition: background-color 0.2s ease;
+}
+
+.btn-crear:hover {
+    background-color: #3b82f6; 
+}
+
+/* CONTENEDOR DEL PIN FLOTANTE */
+.punto-marcador {
+    position: absolute; 
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    cursor: move; 
+    user-select: none; 
+    transform: translate(-50%, -85%); 
+    z-index: 100;
+}
+
+/* El texto superior del pin */
+.punto-texto {
+    background-color: #ffffff;
+    color: #321730;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 3px 8px;
+    border-radius: 4px;
+    white-space: nowrap; 
+    box-shadow: 0px 2px 5px rgba(0,0,0,0.3);
+    margin-bottom: 4px;
+}
+
+/* El círculo de color inferior del pin */
+.punto-circulo {
+    border-radius: 50%;
+    border: 2px solid white;
+    box-shadow: 0px 2px 6px rgba(0,0,0,0.4);
+}
+
+/* Caja contenedora donde flota tu punto de muestra */
+.zona-vista-previa {
+    min-height: 100px;
+    background-color: rgba(255, 255, 255, 0.4);
+    border: 2px dashed #8A5689;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.punto-marcador-preview {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
