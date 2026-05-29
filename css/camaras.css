@@ -92,20 +92,7 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Sombra */
     cursor: pointer;
 
-    /* 1. IMAGEN POR DEFECTO */
-    /* Asegúrate de cambiar "imagen-normal.jpg" por tu ruta real */
-    background-image: url('https://i.pinimg.com/1200x/45/56/57/4556579ad8cce82afbe8fae24ba55e04.jpg');/*imagen, gif o video */
-
-    /* Ajustes para que la imagen se vea bien */
-    background-size: cover;      /* Escala la imagen para que cubra todo el contenedor */
-    background-position: center; /* Centra la imagen */
-    transition: background-image 0.3s ease; /* Transición suave de 0.3 segundos */
-}
- 
-/* 2. IMAGEN AL PASAR EL CURSOR (HOVER) */
-.imagen-interactiva:hover {
-    /* Asegúrate de cambiar "imagen-hover.jpg" por tu ruta real */
-    background-image: url('https://i.pinimg.com/originals/3d/53/e7/3d53e71011c2792de9fd6c82e9396730.gif');
+   
 }
 /* ======================================================= */
 /* NUEVO: Distribución de texto e imagen en columnas       */
