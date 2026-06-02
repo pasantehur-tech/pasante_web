@@ -189,3 +189,26 @@ figcaption a {
 figcaption a:hover {
     text-decoration: underline;
 }
+/* Alinea las figuras (imágenes + texto interno) a la derecha */
+figure {
+    float: right;
+    margin: 10px 0 20px 20px; /* Margen para que el texto no toque la imagen */
+    background-color: #f9f9f9; /* Fondo opcional para enmarcar el contenido */
+    border: 1px solid #ccc;
+    padding: 10px;
+    max-width: 300px; /* Limita el ancho máximo para que no ocupe toda la pantalla */
+    text-align: center;
+}
+
+/* Asegura que los textos largos de los párrafos limpien el flujo si es necesario */
+.seccion-texto p {
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+/* Truco CSS para limpiar el float y evitar que los elementos de abajo se desposicionen */
+.seccion-texto::after {
+    content: "";
+    display: table;
+    clear: both;
+}
