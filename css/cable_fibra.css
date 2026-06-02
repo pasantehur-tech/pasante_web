@@ -1,6 +1,6 @@
 .container {
     display: flex;
-    min-height: 100vh; /* Hace que ocupe todo el alto de la pantalla */
+    min-height: 200vh; /* Hace que ocupe todo el alto de la pantalla */
 }
 
 /* 2. Estilos para tu Sidebar con COLOR */
@@ -92,18 +92,128 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Sombra */
     cursor: pointer;
 
-    /* 1. IMAGEN POR DEFECTO */
-    /* Asegúrate de cambiar "imagen-normal.jpg" por tu ruta real */
-    background-image: url('https://i.pinimg.com/1200x/45/56/57/4556579ad8cce82afbe8fae24ba55e04.jpg');/*imagen, gif o video */
-
-    /* Ajustes para que la imagen se vea bien */
-    background-size: cover;      /* Escala la imagen para que cubra todo el contenedor */
-    background-position: center; /* Centra la imagen */
-    transition: background-image 0.3s ease; /* Transición suave de 0.3 segundos */
+   
 }
- 
-/* 2. IMAGEN AL PASAR EL CURSOR (HOVER) */
-.imagen-interactiva:hover {
-    /* Asegúrate de cambiar "imagen-hover.jpg" por tu ruta real */
-    background-image: url('https://i.pinimg.com/originals/3d/53/e7/3d53e71011c2792de9fd6c82e9396730.gif');
+/* ======================================================= */
+/* NUEVO: Distribución de texto e imagen en columnas       */
+/* ======================================================= */
+
+/* Organiza el bloque de texto y la imagen de lado a lado */
+.contenedor-instrucciones {
+    display: flex;
+    align-items: flex-end;       /* Alinea la imagen abajo en la esquina con los últimos párrafos */
+    justify-content: space-between; /* Empuja la imagen al extremo derecho */
+    gap: 40px;                   /* Separación de seguridad para que el texto no toque la foto */
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+
+/* Le da prioridad al texto para expandirse en el 60% izquierdo de la zona verde */
+.bloque-texto-camaras {
+    flex: 1;
+    max-width: 60%;
+}
+
+/* Diseña y limita el tamaño de la imagen en la marca roja */
+.mi-imagen.jpg {
+    width: 32%;                  /* Ocupa aproximadamente un tercio de la zona verde */
+    height: auto;                /* Mantiene las proporciones de la foto para que no se estire */
+    max-height: 350px;           /* Evita que se haga demasiado gigante hacia arriba */
+    object-fit: contain;         /* Ajusta la imagen de forma nítida */
+    border-radius: 12px;         /* Bordes redondeados elegantes */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15); /* Sombra suave para que resalte sobre el verde */
+    background-color: rgba(255, 255, 255, 0.15); /* Fondo sutil si la imagen tiene transparencias */
+    padding: 6px;
+}
+/**/
+/*foto + texto*/
+/* Container de la tarjeta (Recuadro exterior) */
+figure[typeof="mw:File/Thumb"] {
+    display: inline-block;
+    background-color: #f8f9fa; /* Fondo gris muy claro */
+    border: 1px solid #c8ccd1; /* Borde gris perimetral */
+    border-radius: 2px;
+    padding: 3px;
+    margin: 0;
+    font-family: sans-serif;
+    max-width: 100%;
+}
+
+/* Enlace contenedor de la imagen */
+figure[typeof="mw:File/Thumb"] a.mw-file-description {
+    display: block;
+    position: relative; /* Necesario para posicionar el icono ::after */
+    background-color: #ffffff; /* Fondo blanco exclusivo para la foto */
+    border: 1px solid #eaecf0; /* Borde interno que abraza la imagen */
+    text-align: center;
+}
+
+/* Ajustes de la imagen */
+figure[typeof="mw:File/Thumb"] img {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    height: auto;
+}
+
+/* Pseudo-elemento ::after (El icono de expandir de Wikipedia abajo a la derecha) */
+figure[typeof="mw:File/Thumb"] a.mw-file-description::after {
+    content: "";
+    position: absolute;
+    bottom: 4px;
+    right: 4px;
+    width: 12px;
+    height: 12px;
+    /* Usamos un SVG en background para simular las dos ventanitas superpuestas */
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"><path fill="%2372774d" d="M1 4h5v5H1zm5 4h5v3H6zm3-7h3v5H9z" opacity="0.55"/></svg>');
+    background-size: contain;
+    background-repeat: no-repeat;
+    pointer-events: none; /* Evita que interfiera con el clic de la imagen */
+}
+
+/* El texto o epígrafe inferior (WikiBanner.) */
+figcaption {
+    display: block;
+    padding: 6px 4px 4px 4px;
+    font-size: 14px;
+    line-height: 1.4;
+    color: #202122; /* Color de texto gris oscuro típico de Wikipedia */
+}
+
+/* Estilo para los enlaces de texto internos en caso de que existan en el figcaption */
+figcaption a {
+    color: #36b; /* El clásico azul de los links de Wikipedia */
+    text-decoration: none;
+}
+
+figcaption a:hover {
+    text-decoration: underline;
+}
+/* Alinea las figuras (imágenes + texto interno) a la derecha */
+figure {
+    float: right;
+    margin: 10px 0 20px 20px; /* Margen para que el texto no toque la imagen */
+    background-color: #f9f9f9; /* Fondo opcional para enmarcar el contenido */
+    border: 1px solid #ccc;
+    padding: 10px;
+    max-width: 300px; /* Limita el ancho máximo para que no ocupe toda la pantalla */
+    text-align: center;
+}
+
+/* Asegura que los textos largos de los párrafos limpien el flujo si es necesario */
+.seccion-texto p {
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+/* Truco CSS para limpiar el float y evitar que los elementos de abajo se desposicionen */
+.seccion-texto::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+.imagen-derecha {
+    float: right;
+    margin-left: 20px; /* Espacio para que el texto no se pegue a la imagen */
+    margin-bottom: 10px;
 }
