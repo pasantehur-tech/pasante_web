@@ -125,3 +125,67 @@
     background-color: rgba(255, 255, 255, 0.15); /* Fondo sutil si la imagen tiene transparencias */
     padding: 6px;
 }
+/**/
+/*foto + texto*/
+/* Container de la tarjeta (Recuadro exterior) */
+figure[typeof="mw:File/Thumb"] {
+    display: inline-block;
+    background-color: #f8f9fa; /* Fondo gris muy claro */
+    border: 1px solid #c8ccd1; /* Borde gris perimetral */
+    border-radius: 2px;
+    padding: 3px;
+    margin: 0;
+    font-family: sans-serif;
+    max-width: 100%;
+}
+
+/* Enlace contenedor de la imagen */
+figure[typeof="mw:File/Thumb"] a.mw-file-description {
+    display: block;
+    position: relative; /* Necesario para posicionar el icono ::after */
+    background-color: #ffffff; /* Fondo blanco exclusivo para la foto */
+    border: 1px solid #eaecf0; /* Borde interno que abraza la imagen */
+    text-align: center;
+}
+
+/* Ajustes de la imagen */
+figure[typeof="mw:File/Thumb"] img {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    height: auto;
+}
+
+/* Pseudo-elemento ::after (El icono de expandir de Wikipedia abajo a la derecha) */
+figure[typeof="mw:File/Thumb"] a.mw-file-description::after {
+    content: "";
+    position: absolute;
+    bottom: 4px;
+    right: 4px;
+    width: 12px;
+    height: 12px;
+    /* Usamos un SVG en background para simular las dos ventanitas superpuestas */
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"><path fill="%2372774d" d="M1 4h5v5H1zm5 4h5v3H6zm3-7h3v5H9z" opacity="0.55"/></svg>');
+    background-size: contain;
+    background-repeat: no-repeat;
+    pointer-events: none; /* Evita que interfiera con el clic de la imagen */
+}
+
+/* El texto o epígrafe inferior (WikiBanner.) */
+figcaption {
+    display: block;
+    padding: 6px 4px 4px 4px;
+    font-size: 14px;
+    line-height: 1.4;
+    color: #202122; /* Color de texto gris oscuro típico de Wikipedia */
+}
+
+/* Estilo para los enlaces de texto internos en caso de que existan en el figcaption */
+figcaption a {
+    color: #36b; /* El clásico azul de los links de Wikipedia */
+    text-decoration: none;
+}
+
+figcaption a:hover {
+    text-decoration: underline;
+}
