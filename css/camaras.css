@@ -1,6 +1,6 @@
 .container {
     display: flex;
-    min-height: 100vh; /* Hace que ocupe todo el alto de la pantalla */
+    min-height: 200vh; /* Hace que ocupe todo el alto de la pantalla */
 }
 
 /* 2. Estilos para tu Sidebar con COLOR */
